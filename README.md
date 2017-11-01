@@ -15,11 +15,11 @@ one your collaborator wrote.
 Pushbutton is basically an organizational strategy for your polyglot
 mess that introduces discoverability and a unified entrypoint.
 
-```
-# first you make a collection of little executables written in your
-# preferred scripting language. you organize them into thematically
-# consistent subdirectories
+First you make a collection of little executables written in your
+preferred scripting language. Organize them into thematically
+consistent subdirectories, which will define subcommands:
 
+```
 $ cd ~/foodops
 $ ls
 cook eat order
@@ -28,7 +28,6 @@ nom nom
 
 $ ls cook
 boil braise fry
-$ ./cook
 $ ./cook/boil
 bubble!
 $ ./cook/fry
@@ -48,21 +47,22 @@ I see you're feeling indecisive today. Randomly choosing: tacos!
 Who ordered tacos?
 
 # pushbutton gives you a command line interface with some nice magic
-$ ./pushbutton.py foodops eat
-nom nom
 $ ./pushbutton.py foodops help
 Subcommands: eat, cook, order
+$ ./pushbutton.py foodops eat
+nom nom
 $ ./pushbotton.py foodops cook
 You can cook: boil, braise, fry
 $ ./pushbutton.py foodops cook all
 bubble!
 stew!
 sizzle!
+# here's where that override comes in
 $ ./pushbutton.py foodops order
 I see you're feeling indecisive today. Randomly choosing: thai!
 Who ordered Thai?
 
-# too much typing! make a shim!
+# Ok, cool, but still too much typing! Let's make a shim!
 $ ./make_pushbutton_shim.py foodops foodie
 Installed pushbutton shim for ./foodops/ at /usr/local/bin/foodie
 $ foodie cook boil
@@ -75,6 +75,10 @@ Who ordered pizza?
 ## Credit
 
 Credit where credit is due: former coworker
-https://github.com/kevinbirch came up with this general
+[kmb](https://github.com/kevinbirch) came up with this general
 tree-of-lil'-scripts-that-defines-command-line-interface pattern for
-some great internal tooling we had at https://github.com/percolate.
+some great internal tooling we had at [Percolate](https://github.com/percolate).
+
+I should mention I love [docopt](http://docopt.org/) and use it
+whenever I can.  Credit also probably to kmb for heckling me into
+loving docopt, now that I think of it.

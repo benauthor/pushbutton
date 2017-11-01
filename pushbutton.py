@@ -5,6 +5,7 @@ Pushbutton is a shiny facade for any polyglot mess
 from __future__ import print_function
 import os
 import sys
+import subprocess
 
 # magic files
 _F_ALL = ".all"
@@ -18,19 +19,54 @@ _A_HELP = "help"
 _A_LIST = "list"
 
 
+def _exec(fpath, args):
+    return subprocess.call([fpath] + args)
+
+
+def _get_options(path):
+    return [i for i in os.listdir(path) if not i.startswith(".")]
+
+
+def _list_dir(path, args):
+    print("Hi! Your options are: %s" % _get_options(path))
+
+
+def _help_for_dir(path, args):
+    # magic .help overrides default help
+    if os.path.isfile(os.path.join(path, _F_HELP)):
+        _exec(os.path.join(path, _F_HELP), args)
+    _default_help(path, args)
+
+
+def _default_help(path, args):
+    print("you ran %s with args %s" % (path, args))
+    print("valid options are: %s" % _get_options(path))
+
+
 def pushbutton_exec_file(path, args):
-    print('exec this file')
-    print(path)
-    print(args)
+    return _exec(path, args)
 
 
 def pushbutton_exec_dir(path, args):
-    print('exec this dir')
-    print(path)
-    print(args)
-    # default: do custom .exec
-    # default: do custom .help
-    # default: do deafult .help which is list commands
+    # magic .exec overrides default behavior
+    if os.path.isfile(os.path.join(path, _F_EXEC)):
+        return _exec(os.path.join(path, _F_EXEC), args)
+
+    if args:
+        # magic args for *all* and *help*
+        if args[0] == _A_ALL:
+            print("TODO run all")
+            # TODO error code when running multiple things
+            return 0
+        elif args[0] == _A_HELP:
+            _help_for_dir(path, args[1:])
+            return 0
+        elif args[0] == _A_LIST:
+            _list_dir(path, args[1:])
+            return 0
+
+    _help_for_dir(path, args)
+    return 1
 
 
 def pushbutton_exec(path, args):
@@ -65,7 +101,7 @@ def pushbutton_navigate(tree, args):
 def _main():
     tree = sys.argv[1]
     args = sys.argv[2:]
-    pushbutton_navigate(tree, args)
+    sys.exit(pushbutton_navigate(tree, args))
 
 
 if __name__ == "__main__":
