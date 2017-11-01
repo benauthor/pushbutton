@@ -33,8 +33,15 @@ def _get_options(path):
 
 
 def _list_action(path, args):
-    print("subcommands: %s" % ", ".join(_get_options(path)))
+    # magic .list overrides default help
+    if os.path.isfile(os.path.join(path, _F_LIST)):
+        return _exec(os.path.join(path, _F_LIST), args)
+    _default_list(path)
     return 0
+
+
+def _default_list(path):
+    print("subcommands: %s" % ", ".join(_get_options(path)))
 
 
 def _help_action(path, args, stack):
@@ -52,7 +59,7 @@ def _default_help(path, args, stack):
     N.B. caller determines exit code!
     """
     print("Usage: %s SUBCOMMAND" % " ".join(stack))
-    _list_action(path, args)
+    _default_list(path)
     print("(you could also say: %s)" % ", ".join(_MAGIC_ARGS))
     if args:
         print("You said: %s" % " ".join(args))
