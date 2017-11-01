@@ -90,7 +90,7 @@ def pushbutton_exec_dir(path, args, stack):
     if os.path.isfile(os.path.join(path, _F_EXEC)):
         return _exec(os.path.join(path, _F_EXEC), args)
 
-    _help_action(path, args)
+    _help_action(path, args, stack)
     return 1
 
 
