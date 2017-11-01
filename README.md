@@ -20,7 +20,7 @@ preferred scripting language. Organize them into thematically
 consistent subdirectories, which will define subcommands:
 
 ```
-$ cd ~/foodops
+$ cd ~/example
 $ ls
 cook eat order
 $ ./eat
@@ -42,13 +42,13 @@ Who ordered a pizza?
 Pushbutton gives you a command line interface with some nice magic:
 
 ```
-$ ./pushbutton.py foodops help
+$ ./pushbutton.py example help
 Subcommands: eat, cook, order
-$ ./pushbutton.py foodops eat
+$ ./pushbutton.py example eat
 nom nom
-$ ./pushbotton.py foodops cook
+$ ./pushbotton.py example cook
 You can cook: boil, braise, fry
-$ ./pushbutton.py foodops cook all
+$ ./pushbutton.py example cook all
 bubble!
 stew!
 sizzle!
@@ -63,7 +63,7 @@ $ echo '#/bin/bash\
 $ ./order/.exec
 I see you're feeling indecisive today. Randomly choosing: tacos!
 Who ordered tacos?
-$ ./pushbutton.py foodops order
+$ ./pushbutton.py example order
 I see you're feeling indecisive today. Randomly choosing: thai!
 Who ordered Thai?
 ```
@@ -71,8 +71,8 @@ Who ordered Thai?
 Ok, cool, but still too much typing! Let's make a shim!
 
 ```
-$ ./make_pushbutton_shim foodops foodie
-Installed pushbutton shim for ./foodops/ at /usr/local/bin/foodie
+$ ./make_pushbutton_shim example foodie
+Installed pushbutton shim for ./example/ at /usr/local/bin/foodie
 $ foodie cook boil
 bubble!
 $ foodie order
@@ -99,8 +99,8 @@ Magic files that override magic behaviors are:
 
 Make an executable file in your preferred manner. All excess arguments
 will be passed on to your executable in a straightforward manner.
-i.e. in our example, `foodie cook boil broccoli --minutes 10` is
-equivalent to running `./foodops/cook/boil broccoli --minutes 10`.
+i.e. `foodie cook boil broccoli --minutes 10` is
+equivalent to running `./example/cook/boil broccoli --minutes 10`.
 
 
 ## Credit

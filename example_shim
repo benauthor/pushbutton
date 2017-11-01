@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# TODO some slick way to generate and install shims like this:
-# $ make_shim tree_path/ my_cmd_name -> installs something at /usr/local/bin/my_cmd_name
-
-./pushbutton.py example/ "$@"
