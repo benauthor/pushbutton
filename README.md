@@ -37,16 +37,11 @@ $ ls order
 pizza random tacos thai
 $ ./order/pizza
 Who ordered a pizza?
+```
 
-# Here's how we will override Pushbutton magic with specially named files
-# Let's write an ./order/.exec that hits the `random` subcommand
-$ echo '#/bin/bash\
-> $(dirname "${BASH_SOURCE[0]}")/random > ./order/.exec
-$ ./order/.exec
-I see you're feeling indecisive today. Randomly choosing: tacos!
-Who ordered tacos?
+Pushbutton gives you a command line interface with some nice magic:
 
-# pushbutton gives you a command line interface with some nice magic
+```
 $ ./pushbutton.py foodops help
 Subcommands: eat, cook, order
 $ ./pushbutton.py foodops eat
@@ -57,12 +52,25 @@ $ ./pushbutton.py foodops cook all
 bubble!
 stew!
 sizzle!
-# here's where that override comes in
+```
+
+We can override Pushbutton magic with specially named files.
+Let's write an ./order/.exec that hits the `random` subcommand.
+
+```
+$ echo '#/bin/bash\
+> $(dirname "${BASH_SOURCE[0]}")/random > ./order/.exec
+$ ./order/.exec
+I see you're feeling indecisive today. Randomly choosing: tacos!
+Who ordered tacos?
 $ ./pushbutton.py foodops order
 I see you're feeling indecisive today. Randomly choosing: thai!
 Who ordered Thai?
+```
 
-# Ok, cool, but still too much typing! Let's make a shim!
+Ok, cool, but still too much typing! Let's make a shim!
+
+```
 $ ./make_pushbutton_shim foodops foodie
 Installed pushbutton shim for ./foodops/ at /usr/local/bin/foodie
 $ foodie cook boil
