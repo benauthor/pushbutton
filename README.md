@@ -2,6 +2,9 @@
 
 A shiny facade for any polyglot mess
 
+![convenience](https://i.kinja-img.com/gawker-media/image/upload/s--pZMUC9Dt--/c_scale,f_auto,fl_progressive,q_80,w_800/18rvceav6dkkhjpg.jpg)
+
+
 ## What it is
 
 Sometimes you need to write a command line tool. You pick your
@@ -79,6 +82,18 @@ $ foodie order
 I see you're feeling indecisive today. Randomly choosing: pizza!
 Who ordered pizza?
 ```
+
+## Installation
+
+The pushbutton script is a free-wheeling, no-install-necessary
+rambler. If you've got a relatively modern version of Python installed,
+it should Just Work. However the idea is to turn your tree of little
+scripts into one glorious command line tool. To do that, run:
+
+     ./make_pushbutton_shim path/to/my/scripts somename
+
+If you move your scripts, everything will break. Oh no! What to do?
+Just make a new shim.
 
 ## Magics
 
