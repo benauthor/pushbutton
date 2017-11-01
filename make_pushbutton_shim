@@ -6,9 +6,9 @@ bin_dir=/usr/local/bin
 cmd_path=$bin_dir/$cmd_name
 here_path="$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd -P)"
 full_tree_path=$here_path/$tree_path
-cp ./pushbutton.py $bin_dir
+cp "$here_path/pushbutton.py" $bin_dir/pushbutton.py
 
-echo '#!/bin/sh' > "$cmd_path"
+echo '#!/bin/bash' > "$cmd_path"
 # N.B. single quotes to avoid expansion here
 echo '$(dirname "${BASH_SOURCE[0]}")/pushbutton.py '"$full_tree_path"' "$@"' >> "$cmd_path"
 chmod +x "$cmd_path"
