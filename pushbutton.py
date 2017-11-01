@@ -6,11 +6,16 @@ from __future__ import print_function
 import os
 import sys
 
-# special behaviors TODO
-_HELP = ".help"
-_ALL = ".all"
-_EXEC = ".exec"
-_LIST = ".ls"  # why would we override this? kill it.
+# magic files
+_F_ALL = ".all"
+_F_EXEC = ".exec"
+_F_HELP = ".help"
+_F_list = ".list"
+
+# magic args
+_A_ALL = "all"
+_A_HELP = "help"
+_A_LIST = "list"
 
 
 def pushbutton_exec_file(path, args):

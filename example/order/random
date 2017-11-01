@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "I see you're feeling indecisive today. Randomly choosing: thai!"
+"$(dirname "${BASH_SOURCE[0]}")/thai"
