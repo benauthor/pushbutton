@@ -83,11 +83,6 @@ def pushbutton_navigate(tree, args):
     nextcmd, nextargs = args[0], args[1:]
 
     root, dirs, files = next(walker)
-
-    if nextcmd in dirs and nextcmd in files:
-        raise RuntimeError(
-            "Ambiguous command, %s is both a dir and a file" % nextcmd)
-
     nextpath = os.path.join(root, nextcmd)
 
     if nextcmd in files:
