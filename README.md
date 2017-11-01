@@ -62,7 +62,7 @@ Let's write an ./order/.exec that hits the `random` subcommand.
 
 ```
 $ echo '#/bin/bash\
-> $(dirname "${BASH_SOURCE[0]}")/random > ./order/.exec
+> $(dirname "${BASH_SOURCE[0]}")/random' > ./order/.exec
 $ ./order/.exec
 I see you're feeling indecisive today. Randomly choosing: tacos!
 Who ordered tacos?
