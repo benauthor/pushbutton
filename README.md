@@ -63,7 +63,7 @@ I see you're feeling indecisive today. Randomly choosing: thai!
 Who ordered Thai?
 
 # Ok, cool, but still too much typing! Let's make a shim!
-$ ./make_pushbutton_shim.py foodops foodie
+$ ./make_pushbutton_shim foodops foodie
 Installed pushbutton shim for ./foodops/ at /usr/local/bin/foodie
 $ foodie cook boil
 bubble!
