@@ -80,6 +80,29 @@ I see you're feeling indecisive today. Randomly choosing: pizza!
 Who ordered pizza?
 ```
 
+## Magics
+
+Magic args are:
+- `help`: print the help for the command represented by the directory
+- `list`: print all available subcommands in the directory
+- `all`: run all the subcommands in the directory
+
+Magic files that override magic behaviors are:
+- `.exec`: what to do when running the directory without a
+  subcommand. default: print help
+- `.all`: custom `all` for the directory. you may want to leave something
+  out for some reason.
+- `.help`: custom `help` for the directory.
+- `.list`: custom `list` for the directory.
+
+## Writing subcommands
+
+Make an executable file in your preferred manner. All excess arguments
+will be passed on to your executable in a straightforward manner.
+i.e. in our example, `foodie cook boil broccoli --minutes 10` is
+equivalent to running `./foodops/cook/boil broccoli --minutes 10`.
+
+
 ## Credit
 
 Credit where credit is due: former coworker
